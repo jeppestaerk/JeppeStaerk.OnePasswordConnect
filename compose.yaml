@@ -1,7 +1,0 @@
-﻿services:
-  jeppestaerk.onepasswordconnect.testproject:
-    image: jeppestaerk.onepasswordconnect.testproject
-    build:
-      context: .
-      dockerfile: tests/JeppeStaerk.OnePasswordConnect.TestProject/Dockerfile
-
