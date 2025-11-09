@@ -1,0 +1,32 @@
+### Server Heartbeat
+GET http://{{op-connect-api}}/heartbeat
+Content-type: application/json
+
+### Server Health
+GET http://{{op-connect-api}}/health
+Content-type: application/json
+
+### Get Vaults
+GET http://{{op-connect-api}}/v1/vaults
+Authorization: Bearer {{op-connect-token}}
+Content-type: application/json
+
+> {%
+    client.global.set("vaultUUID", jsonPath(response.body, "$[0].id",))
+%}
+
+### Get Items in Vault
+GET http://{{op-connect-api}}/v1/vaults/{{vaultUUID}}/items
+Authorization: Bearer {{op-connect-token}}
+Content-type: application/json
+
+> {%
+    client.global.set("itemUUID", jsonPath(response.body, "$[0].id",))
+%}
+
+### Get Item Details
+GET http://{{op-connect-api}}/v1/vaults/{{vaultUUID}}/items/{{itemUUID}}
+Authorization: Bearer {{op-connect-token}}
+Content-type: application/json
+
+###

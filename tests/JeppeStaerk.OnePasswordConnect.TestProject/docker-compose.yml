@@ -1,0 +1,29 @@
+name: op-connect
+
+services:
+  op-connect-api:
+    image: 1password/connect-api:latest
+    container_name: op-connect-api
+    ports:
+      - "127.0.0.1:9080:9080"
+    volumes:
+      - "./1password-credentials.json:/home/opuser/.op/1password-credentials.json"
+      - "data:/home/opuser/.op/data"
+    environment:
+      - OP_HTTP_PORT=9080
+      - OP_LOG_LEVEL=info
+
+  op-connect-sync:
+    image: 1password/connect-sync:latest
+    container_name: op-connect-sync
+    volumes:
+      - "./1password-credentials.json:/home/opuser/.op/1password-credentials.json"
+      - "data:/home/opuser/.op/data"
+
+volumes:
+  data:
+
+networks:
+  default:
+    driver: bridge
+    name: op-connect

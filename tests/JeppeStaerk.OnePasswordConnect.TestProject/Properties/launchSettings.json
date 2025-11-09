@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "JeppeStaerk.OnePasswordConnect.TestProject": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ONEPASSWORD_CONNECT_URL": "http://localhost:9080",
+        "ONEPASSWORD_CONNECT_TOKEN": ""
+      }
+    }
+  }
+}

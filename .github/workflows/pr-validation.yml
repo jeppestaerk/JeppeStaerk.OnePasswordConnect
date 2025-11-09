@@ -1,0 +1,58 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [ main ]
+
+env:
+  PROJECT_PATH: 'src/JeppeStaerk.OnePasswordConnect.Sdk/JeppeStaerk.OnePasswordConnect.Sdk.csproj'
+
+jobs:
+  validate:
+    name: Validate PR
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        global-json-file: global.json
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+
+    - name: Build
+      run: |
+        dotnet build ${{ env.PROJECT_PATH }} \
+          --configuration Release \
+          --no-restore \
+          -p:TreatWarningsAsErrors=true \
+          -p:RepositoryBranch=${{ github.head_ref }} \
+          -p:RepositoryCommit=${{ github.event.pull_request.head.sha }}
+
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+      continue-on-error: true
+
+    - name: Pack (validation only)
+      run: |
+        dotnet pack ${{ env.PROJECT_PATH }} \
+          --configuration Release \
+          --no-build \
+          --output ./artifacts \
+          -p:RepositoryBranch=${{ github.head_ref }} \
+          -p:RepositoryCommit=${{ github.event.pull_request.head.sha }}
+
+    - name: Verify package contents
+      run: |
+        echo "Package contents:"
+        unzip -l ./artifacts/*.nupkg
+
+        echo ""
+        echo "Package metadata:"
+        unzip -p ./artifacts/*.nupkg *.nuspec
