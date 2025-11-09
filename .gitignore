@@ -285,3 +285,4 @@ CLAUDE.md
 .claude
 1password-credentials.json
 .env
+http-client.private.env
