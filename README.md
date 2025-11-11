@@ -124,8 +124,8 @@ public class SecretService
 
 ## Requirements
 
-- **.NET Standard 2.1** or **.NET 9.0+**
-  - Works with .NET Core 3.0+, .NET 5+, .NET 6+, .NET 7+, .NET 8+, .NET 9+
+- **.NET Standard 2.1** or **.NET 10.0+**
+  - Works with .NET Core 3.0+, .NET 5+, .NET 6+, .NET 7+, .NET 8+, .NET 9+, .NET 10+
   - Also compatible with .NET Framework 4.6.2+ (via .NET Standard 2.1)
 - **1Password Connect Server** (v1.8.1)
 - **Microsoft.Extensions.DependencyInjection** (built-in with ASP.NET Core)
