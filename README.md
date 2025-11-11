@@ -5,7 +5,7 @@
 **Production-ready .NET SDK for 1Password Connect API**
 
 [![NuGet](https://img.shields.io/nuget/v/JeppeStaerk.OnePasswordConnect.Sdk.svg)](https://www.nuget.org/packages/JeppeStaerk.OnePasswordConnect.Sdk/)
-[![.NET](https://img.shields.io/badge/.NET-Standard%202.1%20%7C%20.NET%209.0-512BD4)](https://dotnet.microsoft.com/)
+[![.NET](https://img.shields.io/badge/.NET-Standard%202.1%20%7C%20.NET%2010.0-512BD4)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 *Strongly-typed • Fully asynchronous • Built for dependency injection*
@@ -180,9 +180,8 @@ info: Circuit breaker reset - connection restored
 
 ## Version Compatibility
 
-This SDK version matches the 1Password Connect API version it targets:
+This SDK targets 1Password Connect version:
 
-- **SDK Version:** 1.8.1
 - **API Version:** 1.8.1
 
 ## Contributing
