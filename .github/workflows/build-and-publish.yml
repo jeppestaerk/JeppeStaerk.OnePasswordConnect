@@ -128,7 +128,7 @@ jobs:
         subject-path: './artifacts/*.nupkg'
 
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v7
       if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
       with:
         name: nuget-packages
@@ -156,7 +156,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Download artifacts
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v8
       with:
         name: nuget-packages
         path: ./artifacts
@@ -199,7 +199,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Download artifacts
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v8
       with:
         name: nuget-packages
         path: ./artifacts
